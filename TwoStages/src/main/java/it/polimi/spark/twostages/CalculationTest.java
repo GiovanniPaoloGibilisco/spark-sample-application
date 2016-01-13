@@ -9,18 +9,24 @@ import scala.util.Random;
 public class CalculationTest {
 
 	static final Logger logger = LoggerFactory.getLogger(CalculationTest.class);
-	private static final double MAX_FACTOR = 100;
+	private static final double MIN_FACTOR = 100000000d;
+	private static final double MAX_FACTOR = 1000000000d;
 
 	public static void main(String[] args) {
 
-		StopWatch timer = new StopWatch();
+		
+		double num = new Random().nextDouble();
+		logger.info("num: "+num);
 		logger.info("Factor , Time");
-		for (double factor = 1; factor < MAX_FACTOR; factor++) {
+		
+		for (double factor = MIN_FACTOR; factor <= MAX_FACTOR; factor+=(MAX_FACTOR)/10) {
+			StopWatch timer = new StopWatch();
 			timer.start();
-			calculate(new Random().nextDouble(), factor);
+			calculate(num, factor);
 			timer.split();			
 			long time = timer.getSplitTime();
 			timer.stop();
+
 			logger.info(factor + ","+ time);
 		}
 

@@ -25,7 +25,8 @@ public class LinearTest {
 		initInput(input1, input2, size);
 		List<Double> unifiedInput = new ArrayList<Double>(input1);
 		unifiedInput.addAll(input2);
-		
+		logger.info("Input generated");
+		logger.info("Factor, Size,Time");
 		timer.start();
 		doWork(unifiedInput,factor);
 		timer.split();
